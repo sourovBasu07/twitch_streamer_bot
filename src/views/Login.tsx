@@ -1,20 +1,25 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+// import { useState } from 'react'
+import { redirect } from 'next/navigation'
+
+import { signIn, useSession } from 'next-auth/react'
 
 // Next Imports
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
-import Checkbox from '@mui/material/Checkbox'
+
+// import TextField from '@mui/material/TextField'
+// import IconButton from '@mui/material/IconButton'
+// import InputAdornment from '@mui/material/InputAdornment'
+// import Checkbox from '@mui/material/Checkbox'
 import Button from '@mui/material/Button'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Divider from '@mui/material/Divider'
+
+// import FormControlLabel from '@mui/material/FormControlLabel'
+// import Divider from '@mui/material/Divider'
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -36,7 +41,13 @@ import { useSettings } from '@core/hooks/useSettings'
 
 const LoginV2 = ({ mode }: { mode: Mode }) => {
   // States
-  const [isPasswordShown, setIsPasswordShown] = useState(false)
+  // const [isPasswordShown, setIsPasswordShown] = useState(false)
+
+  const { data: session } = useSession()
+
+  if (session) {
+    redirect('/')
+  }
 
   // Vars
   const darkImg = '/images/pages/auth-v2-mask-dark.png'
@@ -47,7 +58,7 @@ const LoginV2 = ({ mode }: { mode: Mode }) => {
   const borderedLightIllustration = '/images/illustrations/auth/v2-login-light-border.png'
 
   // Hooks
-  const router = useRouter()
+  // const router = useRouter()
   const { settings } = useSettings()
   const authBackground = useImageVariant(mode, lightImg, darkImg)
 
@@ -59,7 +70,7 @@ const LoginV2 = ({ mode }: { mode: Mode }) => {
     borderedDarkIllustration
   )
 
-  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+  // const handleClickShowPassword = () => setIsPasswordShown(show => !show)
 
   return (
     <div className='flex bs-full justify-center'>
@@ -93,7 +104,7 @@ const LoginV2 = ({ mode }: { mode: Mode }) => {
             <Typography variant='h4'>{`Welcome to ${themeConfig.templateName}!👋🏻`}</Typography>
             <Typography className='mbs-1'>Please sign-in to your account and start the adventure</Typography>
           </div>
-          <form
+          {/* <form
             noValidate
             autoComplete='off'
             onSubmit={e => {
@@ -152,7 +163,10 @@ const LoginV2 = ({ mode }: { mode: Mode }) => {
                 <i className='ri-google-fill' />
               </IconButton>
             </div>
-          </form>
+          </form> */}
+          <Button fullWidth variant='contained' type='submit' onClick={() => signIn()}>
+            Log In with twitch
+          </Button>
         </div>
       </div>
     </div>
