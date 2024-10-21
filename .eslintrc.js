@@ -11,55 +11,11 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    'padding-line-between-statements': [
-      'error',
-      {
-        blankLine: 'any',
-        prev: 'export',
-        next: 'export'
-      },
-      {
-        blankLine: 'always',
-        prev: ['const', 'let', 'var'],
-        next: '*'
-      },
-      {
-        blankLine: 'any',
-        prev: ['const', 'let', 'var'],
-        next: ['const', 'let', 'var']
-      },
-      {
-        blankLine: 'always',
-        prev: '*',
-        next: ['function', 'multiline-const', 'multiline-block-like']
-      },
-      {
-        blankLine: 'always',
-        prev: ['function', 'multiline-const', 'multiline-block-like'],
-        next: '*'
-      }
-    ],
     'newline-before-return': 'error',
     'import/newline-after-import': [
       'error',
       {
         count: 1
-      }
-    ],
-    '@typescript-eslint/ban-types': [
-      'error',
-      {
-        extendDefaults: true,
-        types: {
-          Function: 'Use a specific function type instead',
-          Object: 'Use object instead',
-          Boolean: 'Use boolean instead',
-          Number: 'Use number instead',
-          String: 'Use string instead',
-          Symbol: 'Use symbol instead',
-          any: false,
-          '{}': false
-        }
       }
     ]
   },

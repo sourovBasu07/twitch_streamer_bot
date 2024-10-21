@@ -1,7 +1,6 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import Grid from '@mui/material/Grid'
 
 export default async function Page() {
   const session = await getServerSession(authOptions)
@@ -10,5 +9,5 @@ export default async function Page() {
     redirect('/login')
   }
 
-  return <Grid container spacing={6}></Grid>
+  return <h1>Home Page</h1>
 }

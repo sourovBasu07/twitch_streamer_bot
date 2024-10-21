@@ -1,4 +1,5 @@
-// @ts-nockeck
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 
 import NextAuth from 'next-auth'
 import type { AuthOptions } from 'next-auth'
@@ -10,7 +11,7 @@ export interface TwitchProfile extends Record<string, any> {
   picture: string
 }
 
-export default function TwitchProvider(options: any): any {
+export function TwitchProvider(options: any): any {
   return {
     wellKnown: 'https://id.twitch.tv/oauth2/.well-known/openid-configuration',
     id: 'twitch',
