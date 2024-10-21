@@ -51,8 +51,8 @@ export const authOptions: AuthOptions = {
   secret: 'MXsqeQSZqvht5RE6U7Sg/EqtgKKctiyNm5qA0GoS/HM=',
   providers: [
     TwitchProvider({
-      clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
-      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET
+      clientId: process.env.TWITCH_CLIENT_ID,
+      clientSecret: process.env.TWITCH_CLIENT_SECRET
     })
   ],
   callbacks: {

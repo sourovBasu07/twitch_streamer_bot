@@ -49,6 +49,8 @@ const LoginV2 = ({ mode }: { mode: Mode }) => {
     redirect('/')
   }
 
+  console.log(session)
+
   // Vars
   const darkImg = '/images/pages/auth-v2-mask-dark.png'
   const lightImg = '/images/pages/auth-v2-mask-light.png'
