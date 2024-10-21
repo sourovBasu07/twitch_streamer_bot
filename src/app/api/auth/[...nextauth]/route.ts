@@ -3,6 +3,7 @@
 
 import NextAuth from 'next-auth'
 import type { AuthOptions } from 'next-auth'
+import TwitchProvider from 'next-auth/providers/twitch'
 
 export interface TwitchProfile extends Record<string, any> {
   sub: string
@@ -11,44 +12,44 @@ export interface TwitchProfile extends Record<string, any> {
   picture: string
 }
 
-export function TwitchProvider(options: any): any {
-  return {
-    wellKnown: 'https://id.twitch.tv/oauth2/.well-known/openid-configuration',
-    id: 'twitch',
-    name: 'Twitch',
-    type: 'oauth',
-    authorization: {
-      params: {
-        scope: 'openid user:read:email user:read:follows',
-        claims: {
-          id_token: {
-            email: null,
-            picture: null,
-            preferred_username: null
-          }
-        }
-      }
-    },
-    idToken: true,
-    profile(profile: any) {
-      return {
-        id: profile.sub,
-        name: profile.preferred_username,
-        email: profile.email,
-        image: profile.picture
-      }
-    },
-    style: {
-      logo: '/twitch.svg',
-      logoDark: '/twitch-dark.svg',
-      bg: '#fff',
-      text: '#65459B',
-      bgDark: '#65459B',
-      textDark: '#fff'
-    },
-    options
-  }
-}
+// export function TwitchProvider(options: any): any {
+//   return {
+//     wellKnown: 'https://id.twitch.tv/oauth2/.well-known/openid-configuration',
+//     id: 'twitch',
+//     name: 'Twitch',
+//     type: 'oauth',
+//     authorization: {
+//       params: {
+//         scope: 'openid user:read:email user:read:follows',
+//         claims: {
+//           id_token: {
+//             email: null,
+//             picture: null,
+//             preferred_username: null
+//           }
+//         }
+//       }
+//     },
+//     idToken: true,
+//     profile(profile: any) {
+//       return {
+//         id: profile.sub,
+//         name: profile.preferred_username,
+//         email: profile.email,
+//         image: profile.picture
+//       }
+//     },
+//     style: {
+//       logo: '/twitch.svg',
+//       logoDark: '/twitch-dark.svg',
+//       bg: '#fff',
+//       text: '#65459B',
+//       bgDark: '#65459B',
+//       textDark: '#fff'
+//     },
+//     options
+//   }
+// }
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,

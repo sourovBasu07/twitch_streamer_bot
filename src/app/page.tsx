@@ -9,6 +9,10 @@ const HomePage = async () => {
     redirect('/login')
   }
 
+  if (session) {
+    redirect(`/home`)
+  }
+
   return <div className=''>Home Page</div>
 }
 
